@@ -25,7 +25,7 @@ public class Conditions
 
         // ternary operator: basically condition checking shorthand from if else to ? and :
         string Status = (age > 18) ? "You are eligible for entrance!\n": "You are not eligible for entrance!\n";
-        Console.WriteLine(Status);
+        Console.WriteLine(Status);  
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 public class Arr
 {
@@ -34,6 +35,13 @@ public class Arr
         for (int i = 0; i < numbers.Length; i++)
         {
             Console.WriteLine($"number at index: {i} is {numbers[i]}");
+        }
+
+        // reverse the array
+        Array.Reverse(numbers);
+        foreach(int num in numbers)
+        {
+            Console.WriteLine($"number: {num}")
         }
 
     }

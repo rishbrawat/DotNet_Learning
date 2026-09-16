@@ -3,6 +3,7 @@
 // Interface is a template that defines a set of capabilities such as methods and properties.
 // The class that implements the interface must provide its own implementation.
 // Interface names should start with 'I'.
+// and interfaces are same to abstract classes but, it allows multiple inheritance
 public interface IBank
 {
     // Property contract (classes implementing this must provide a Balance property)
@@ -15,17 +16,15 @@ public interface IBank
 
 // A class implementing the IBank interface
 public class SavingsAccount : IBank
-// Error prevention: In C#, interfaces are "implemented", not "inherited", but the syntax uses a colon (:) for both.
 {
     private decimal _balance;
 
-    // Implementing the Balance property from the interface
+    // implementing the Balance property from the interface
     public decimal Balance
     {
         get { return _balance; }
     }
 
-    // Implementing the Deposit method
     public void Deposit(decimal amount)
     {
         if (amount > 0)
@@ -35,7 +34,6 @@ public class SavingsAccount : IBank
         }
     }
 
-    // Implementing the Withdraw method
     public bool Withdraw(decimal amount)
     {
         if (amount > 0 && amount <= _balance)

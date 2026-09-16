@@ -28,7 +28,7 @@ class ListCol
         fruits.Remove("Peach");
 
         // removeat index remove the element at the specific index
-        fruits.Remove(0);
+        fruits.RemoveAt(0);
 
         // insert an element at specific index
         fruits.Insert(0, "Jaamun");
