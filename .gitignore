@@ -1,5 +1,5 @@
 ## Visual Studio / C# .gitignore
-
+node_modules
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
