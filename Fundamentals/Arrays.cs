@@ -41,7 +41,7 @@ public class Arr
         Array.Reverse(numbers);
         foreach(int num in numbers)
         {
-            Console.WriteLine($"number: {num}")
+            Console.WriteLine($"number: {num}");
         }
 
     }

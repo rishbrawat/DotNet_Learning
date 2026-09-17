@@ -55,7 +55,6 @@ namespace LinqOperators
                 Console.WriteLine($"Name: {emp.Name}, Age: {emp.Age}");
             }
 
-
             // projection operator (Select)
     
             // projection transforms data from one shape/type into another. 
@@ -81,7 +80,7 @@ namespace LinqOperators
                 Console.WriteLine($"Department ID: {group.Key}");
                 foreach (var emp in group)
                 {
-                    Console.WriteLine($"   - {emp.Name}");
+                    Console.WriteLine($" - {emp.Name}");
                 }
             }
 
@@ -91,7 +90,7 @@ namespace LinqOperators
             Console.WriteLine("\n joins (Matching employees with their departments)");
             
             var employeeDetails = employees.Join(
-                departments,
+                departments, // list of departments to join with
                 emp => emp.DeptId,         // outer key selector
                 dept => dept.Id,           // inner key selector
                 (emp, dept) => new         // result selector (what to output)

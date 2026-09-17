@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+// similar to c++ pointer, but type-safe and managed by the runtime.
 
 namespace DelegatesEventsPredicates
 {

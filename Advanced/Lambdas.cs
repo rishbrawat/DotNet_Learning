@@ -16,5 +16,13 @@ class Lambdas
         {
             Console.WriteLine(num);
         }
+
+        // single paramter
+        // <Func int, int> means the function will take integer input and will return integer output
+        Func<int, int> square = x => x * x;
+        Console.WriteLine(square(5));
+
+        // multiple parameters, first parameters are inputs and last parameter is output
+        Func<int, int, int>add = (x, y) => x + y;
     }
 }

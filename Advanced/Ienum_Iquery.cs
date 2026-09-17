@@ -7,7 +7,7 @@ namespace IEnumerableVsIQueryable
     // ienumerable is for in-memory collections like lists, arrays, or dictionaries.
     // when u query an ienumerable, all the data is already loaded into ram, and the filtering 
     // happens locally on your client machine (client-side execution).
-    //
+    
     // iqueryable inherits from ienumerable but its built for remote data sources like sql databases via entity framework.
     // instead of pulling every single row into memory, it uses expression trees to translate your c# code 
     // into a sql query so the database server does the heavy lifting (server-side execution).
