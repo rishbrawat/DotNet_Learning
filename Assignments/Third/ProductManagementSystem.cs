@@ -25,11 +25,7 @@ class Product
 
 class AssignmentThree
 {
-    static string ConnectionData = "Server=3.131.105.103;" +
-        "Database=sDirectSDD2026;" +
-        "User Id=sdirectsdd;" +
-        "Password=sdirect2026;" +
-        "TrustServerCertificate=True";
+    static string ConnectionData = "Server=3.131.105.103;" + "Database=sDirectSDD2026;" + "User Id=sdirectsdd;" + "Password=sdirect2026;" + "TrustServerCertificate=True";
 
     static void Main(string[] args)
     {
@@ -39,12 +35,12 @@ class AssignmentThree
         while (ConnectionOn)
         {
             Console.WriteLine("Product Management System");
-            Console.WriteLine("1. Add Product");
-            Console.WriteLine("2. View All Products");
-            Console.WriteLine("3. Search Products");
-            Console.WriteLine("4. Update Product Price");
-            Console.WriteLine("5. Delete Product");
-            Console.WriteLine("6. View Products By Category");
+            Console.WriteLine("1. Add a product");
+            Console.WriteLine("2. View all Products");
+            Console.WriteLine("3. Search products");
+            Console.WriteLine("4. Update product price");
+            Console.WriteLine("5. Delete product");
+            Console.WriteLine("6. see products by category");
             Console.WriteLine("7. Exit");
             Console.Write("Enter choice: ");
 
@@ -92,11 +88,7 @@ class AssignmentThree
         try{
                 Conn.Open();
                 string Query = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Products' AND xtype='U') " +
-                               "CREATE TABLE Products (" +
-                               "ProductId INT PRIMARY KEY, " +
-                               "ProductName NVARCHAR(100) NOT NULL, " +
-                               "Category NVARCHAR(100), " +
-                               "Price DECIMAL(18,2));";
+                               "CREATE TABLE Products (" +"ProductId INT PRIMARY KEY, " + "ProductName NVARCHAR(100) NOT NULL, " +"Category NVARCHAR(100), " + "Price DECIMAL(18,2));";
                 using (SqlCommand Cmd = new SqlCommand(Query, Conn))
                 {
                     Cmd.ExecuteNonQuery();
