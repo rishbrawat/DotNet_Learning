@@ -1,40 +1,63 @@
 ﻿using System;
+using System.ComponentModel.Design.Serialization;
 
 /**
- * class is a template to create custom data structure, it defines what variables(data) and methods(action) an entity will have, but it does not hold any actual data on its own.
+ * class is a user defined datatype / custom data structure, it defines what variables(data) and methods(action) an entity will have. but it does not occupy any memory until its object is created.
+ * 
+ * class ClassName{
+ *  fields
+ *  methods
+ *  properties
+ * }
  * */
 
-class Car
+
+// modifiers: defines the accessibility of the class, by default its internal
+
+// internal class: a class that can only be accessed by  code inside the same project, and is completely hidden from other projects.
+
+/*
+    access modifiers:
+    public: anyone within the project can access the class , other projects, assemblies that references our code.
+
+    private: its accessible within the class only or struct where it is declared, its a default modifier.
+
+    protected: accessible with class or child classes that inherit from it.
+
+*/
+
+class Student
 {
-    // data the entity will have
-    // get allows us to retrieve or access these values from the outside
-    // set allows us to modify these values from outside
-    string Brand { get; set; }
-    string Model{get; set;}
-    int Speed { get; set; }
-    int YearOfManufacture { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Course { get; set; }
+    public int[] Marks { get; set; }
 
-    // set up a parameterized constructor, it is automatically called when we create an object of that class
-    public Car(String BrandName, String ModelName, int MaxSpeed, int ManufacturYear)
+    public Student(int id, string name, int age, string course, int[] marks)
     {
-        Brand = BrandName;
-        Model = ModelName;
-        Speed = MaxSpeed;
-        YearOfManufacture = ManufacturYear;
+        this.Id = id;
+        this.Name = name;
+        this.Age = age;
+        this.Course = course;
+        this.Marks = marks;
     }
 
-    // methods/action on that data or for entitity
-    void drive()
+    public void printDetails()
     {
-        Console.WriteLine($"The car is now running at {Speed}!");
+        Console.WriteLine($" Name: {this.Name}\n ID: {this.Id}\n Age: {this.Age}\n Course: {this.Course}\n");
     }
-    void CarDetails()
+
+}
+
+public class MainProgram
+{
+    static void Main()
     {
-        Console.WriteLine($"Car Brand: {Brand} \nCar Model: {Model} \nSpeed: {Speed} \nYearOfManufacture: {YearOfManufacture}");
-    }
-    public static void Main()
-    {
-        Car FirstCar = new Car("Honda", "City", 185, 2021);
-        Console.WriteLine(FirstCar.Speed);
+        Student std1 = new Student(1, "Rishabh Rawat", 23, "BTech CSE", new int[] { 96, 97, 95, 99, 97 });
+        Student std2 = new Student(2, "Ankush Chauhan", 25, "BTech CSE", new int[] {61, 45, 41, 62, 0});
+
+        std1.printDetails();
+        std2.printDetails();
     }
 }
