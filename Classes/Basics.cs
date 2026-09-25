@@ -1,7 +1,4 @@
 ﻿using System;
-using System.ComponentModel.Design.Serialization;
-using System.Xml.Linq;
-using static Microsoft.Data.SqlClient.Internal.SqlClientEventSource;
 
 /**
  * class is a user defined datatype / custom data structure, it defines what variables(data) and methods(action) an entity will have. an instance of the class is not created untill an object is instantiated
@@ -27,8 +24,9 @@ using static Microsoft.Data.SqlClient.Internal.SqlClientEventSource;
     protected: accessible with class or child classes that inherit from it.
 
 */
-<<<<<<< HEAD
-namespace oop { 
+
+namespace DotNet_Learning.Classes
+{ 
     class Student
     {
         // get and set methods are used  inside a proprety to control how a value is read and changed
@@ -44,7 +42,10 @@ namespace oop {
         private string name = "NULL";
         private int age = 0;
         private string course = "NULL";
+
+        #pragma warning disable IDE0300, CA1825
         private int[] marks = new int[0];
+        #pragma warning restore IDE0300, CA1825
 
         public int Id
         {
@@ -105,29 +106,20 @@ namespace oop {
                 marks = value;
             }
         }
-=======
-namespace OOPS {
-    class Student
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public string Course { get; set; }
-        public int[] Marks { get; set; }
 
->>>>>>> 1efd250199b35ead97735e182d6a3c40579a8ac1
-        public Student(int id, string name, int age, string course, int[] marks)
+
+         public Student(int id, string name, int age, string course, int[] marks)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Age = age;
-            this.Course = course;
-            this.Marks = marks;
+            Id = id;
+            Name = name;
+            Age = age;
+            Course = course;
+            Marks = marks;
         }
 
-        public void printDetails()
+        public void PrintDetails()
         {
-            Console.WriteLine($" Name: {this.Name}\n ID: {this.Id}\n Age: {this.Age}\n Course: {this.Course}\n");
+            Console.WriteLine($" Name: {Name}\n ID: {Id}\n Age: {Age}\n Course: {Course}\n");
         }
 
     }
@@ -137,20 +129,11 @@ namespace OOPS {
         static void Main()
         {
             Student std1 = new Student(1, "Rishabh Rawat", 23, "BTech CSE", new int[] { 96, 97, 95, 99, 97 });
-            Student std2 = new Student(2, "Ankush Chauhan", 25, "BTech CSE", new int[] {61, 45, 41, 62, 0});
-<<<<<<< HEAD
+            Student std2 = new Student(2, "Ankush Chauhan", 25, "BTech CSE", new int[] { 61, 45, 41, 62, 0 });
 
-            std1.printDetails();
-            std2.printDetails();
+
+            std1.PrintDetails();
+            std2.PrintDetails();
         }
     }
 }
-=======
-
-            std1.printDetails();
-            std2.printDetails();
-        }
-    }
-
-}
->>>>>>> 1efd250199b35ead97735e182d6a3c40579a8ac1
