@@ -2,109 +2,89 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-// linq allows us to query, filter and manipulate the data from different resoucrces
-// linq = language integrated query
+// linq stands for language integrated query
+// linq lets you query and tranform data using c# syntax
 
-namespace LinqOperators
+// instead of manually filtering or working on data using loops, sorting, linq provides several methods to work on the data
+
+class Ln
 {
-    // simple models for our data
-    public class Department
+    static void Main(string[] args)
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+        List<int> numbers = new List<int> {1,2,3,4,5,5,6,8,9};
+        List<int> evens = new List<int>();
 
-    public class Employee
-    {
-        public string Name { get; set; }
-        public int DeptId { get; set; }
-        public int Age { get; set; }
-    }
 
-    class Program
-    {
-        static void Main(string[] args)
+
+        // manually filtering even numbers and then storing it in our evens array
+        foreach (int num in numbers)
         {
-            // setup some dummy data to work with
-            var departments = new List<Department>
+            if (num % 2 == 0)
             {
-                new Department { Id = 1, Name = "HR" },
-                new Department { Id = 2, Name = "IT" },
-                new Department { Id = 3, Name = "Sales" }
-            };
-
-            var employees = new List<Employee>
-            {
-                new Employee { Name = "Alice", DeptId = 2, Age = 28 },
-                new Employee { Name = "Bob", DeptId = 1, Age = 35 },
-                new Employee { Name = "Charlie", DeptId = 2, Age = 24 },
-                new Employee { Name = "Diana", DeptId = 3, Age = 30 },
-                new Employee { Name = "Evan", DeptId = 1, Age = 41 }
-            };
-
-            // filtering operator(Where)
-
-            // filtering is used to pick items that match a specific condition.
-            // basicly like a sql WHERE clause.
-            Console.WriteLine("filtering (Employees older than 28)");
-            
-            var olderEmployees = employees.Where(e => e.Age > 28).ToList();
-
-            foreach (var emp in olderEmployees)
-            {
-                Console.WriteLine($"Name: {emp.Name}, Age: {emp.Age}");
+                evens.Add(num);
             }
-
-            // projection operator (Select)
-    
-            // projection transforms data from one shape/type into another. 
-            // u use Select when u only want specific properties or want to shape a new object.
-            Console.WriteLine("\nprojection (Just employee names in uppercase)");
-            
-            var employeeNames = employees.Select(e => e.Name.ToUpper()).ToList();
-
-            foreach (var name in employeeNames)
-            {
-                Console.WriteLine(name);
-            }
-
-
-            // grouping operator
-            // grouping takes a flat list and splits it into buckets based on a key selector.
-            Console.WriteLine("\ngrouping (Employees grouped by DeptId)");
-            
-            var groupedEmployees = employees.GroupBy(e => e.DeptId);
-
-            foreach (var group in groupedEmployees)
-            {
-                Console.WriteLine($"Department ID: {group.Key}");
-                foreach (var emp in group)
-                {
-                    Console.WriteLine($" - {emp.Name}");
-                }
-            }
-
-
-            // join operatora
-            // joins combine two data sources based on a matching key (like an inner join in sql).
-            Console.WriteLine("\n joins (Matching employees with their departments)");
-            
-            var employeeDetails = employees.Join(
-                departments, // list of departments to join with
-                emp => emp.DeptId,         // outer key selector
-                dept => dept.Id,           // inner key selector
-                (emp, dept) => new         // result selector (what to output)
-                {
-                    EmployeeName = emp.Name,
-                    DepartmentName = dept.Name
-                }
-            );
-
-            foreach (var detail in employeeDetails)
-            {
-                Console.WriteLine($"{detail.EmployeeName} works in {detail.DepartmentName}");
-            }
-
         }
+
+        foreach (int even in evens)
+        {
+            Console.WriteLine(even);
+        }
+
+        // now with linq we can do. enumrable cuz, it will return ienumrable object
+        IEnumerable<int> evenNumbers = numbers.Where(num => num % 2 == 0);
+        foreach(int even in evenNumbers)
+        {
+            Console.WriteLine(even);
+        }
+
+        // common linq methods
+        // where - used to filter a sequence and only returns elements that satisfy the condition, returns IEnumrable object. DECIDES WHICH ELEMENTS REMAIN
+
+        List<int> numbersArray = new List<int> {1,2,3,4,5,6,7,8,9,10};
+        IEnumerable<int> oddNums = numbersArray.Where(n => n %2 != 0);
+
+        // select = transforms each element into other form, converts objects to names, numbers to square, returns IEnumrable<TResult>, DECIDES WHAT EACH ELEMENT BECOMES
+        IEnumerable<int> squared = numbersArray.Select( n => n * n);
+
+        // orderby : to order elememts in ascending format
+        var ascendingElements = numbersArray.OrderBy(n => n);
+        var descendingElements = numbersArray.OrderByDescending(n => n);
+
+
+        // checks if any number exists or not
+        bool hasNumber = numbersArray.Any();
+        // we can also write conditions in it
+        bool hasEven = numbersArray.Any(n => n % 2 == 0);
+
+
+        // count() count how many elements are there, returns an integer
+        // useful in pagination, validation, reporting, stats
+        int totalCount = numbersArray.Count();
+        // now we give it a condition
+        int evenCount = numbersArray.Count(n => n % 2 == 0);
+
+        // first(): get the first element
+        int first = numbersArray.First();
+        // adding condition to it
+        int firstEven = numbersArray.First(n => n % 2 == 0); // if nothing matches, it will throw an exception
+
+        // firstOrDefault() -> give me the first matching element or give me default
+        int number = numbersArray.FirstOrDefault(n => n >=100); // for int the default is 0, for a reference type, it can be null or User Object
+
+        // single= for single matching element, must be one matching element
+        int matching = numbersArray.Single(n => n == 5); // will throw exception if there are two matches
+
+        // contains() = checks if the sequence contains the value of not
+        bool exists = numbersArray.Contains(5); // returns boolean val
+
+        // distinct = removes all duplicates
+        var uniqueNumbers = numbersArray.Distinct();
+
+        // pagination related
+        var data = numbersArray.Skip(2).Take(4);
+        
+        // toList -> converting into a list
+        List<int> oddList = oddNums.ToList();
+
     }
 }
