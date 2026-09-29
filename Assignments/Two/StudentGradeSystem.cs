@@ -63,7 +63,7 @@ class Mains
 
             // adding students
             students.Add(new Student1(1, "Rishabh", 88));
-            students.Add(new Student1(2, "Aman", 94));
+            students.Add(new Student1(2, "Ankush", 04));
             students.Add(new Student1(3, "Priya", 65));
             students.Add(new Student1(4, "Neha", 45));
 

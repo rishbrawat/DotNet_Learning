@@ -77,7 +77,7 @@ class Ln
         // contains() = checks if the sequence contains the value of not
         bool exists = numbersArray.Contains(5); // returns boolean val
 
-        // distinct = removes all duplicates
+        // distinct() = removes all duplicates
         var uniqueNumbers = numbersArray.Distinct();
 
         // pagination related

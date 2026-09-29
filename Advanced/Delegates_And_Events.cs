@@ -22,7 +22,7 @@ namespace DelegatesEventsPredicates
             Console.WriteLine("[Upper]: " + msg.ToUpper());
         }
 
-        // events are built on top of delegates. they provide a publishe subscriber model.
+        // events are built on top of delegates. they provide a publisher subscriber model.
         // only the publisher class can trigger the event, keeping things secure.
         public class Button
         {
